@@ -20,7 +20,6 @@ const button = new BtnService({
 const fetchImg = () => {
   button.disable();
   imageService.fetchImg().then(data => {
-    console.log(imgGallery);
     if (data.hits.length === 0) {
       Notify.warning('Картинок нет');
       button.hidden();
