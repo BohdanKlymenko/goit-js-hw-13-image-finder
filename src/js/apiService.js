@@ -15,7 +15,8 @@ export default class ApiService {
       let response = await axios.get(
         `?image_type=photo&orientation=horizontal&q=${this.query}&page=${this.page}&per_page=${this.perPage}&key=${apiKey}`,
       );
-      let data = await response?.data?.hits;
+      let data = await response?.data;
+      this.incrementPage()
       return data;
     } catch (error) {
       console.error(error)
