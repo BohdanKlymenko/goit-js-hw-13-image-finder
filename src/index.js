@@ -20,12 +20,15 @@ const button = new BtnService({
 const fetchImg = () => {
   button.disable();
   imageService.fetchImg().then(data => {
+    console.log(imgGallery);
     if (data.hits.length === 0) {
       Notify.warning('Картинок нет');
       button.hidden();
       return;
     }
-    Notify.success(`По вашему запросу найдено ${data.total} картинок`);
+    if (document.querySelector('.js-gallery').children.length === 0) {
+      Notify.success(`По вашему запросу найдено ${data.total} картинок`);
+    }
     imgGallery.insertAdjacentHTML('beforeend', photoCard(data.hits));
 
     button.show();
