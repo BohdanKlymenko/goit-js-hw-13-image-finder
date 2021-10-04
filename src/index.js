@@ -55,13 +55,15 @@ const searchImg = event => {
   imageService.query = userRequest;
   
   fetchImg();
-
   formSearch.reset();
 };
 
 function clearImgGallery() {
   imgGallery.innerHTML = '';
+  imageService.resetPage();
 }
+
+
 
 formSearch.addEventListener('submit', searchImg);
 loadMoreBtn.addEventListener('click', fetchImg);
